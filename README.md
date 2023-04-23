@@ -1,6 +1,6 @@
-<h1>Argo-Bigbang</h1>
-
+# Argo-Bigbang
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/makdeniz/argo-bigbang/blob/master/LICENSE)
+---
 ArgoCD boilerplate is used to deploy to ArgoCD elegantly. This repository will deploy all the basic components of a common Kubernetes cluster and a sample microservice to provide insight into the architecture of GitOps. By manually executing the shell script or executing it through a pipeline, you will be able to deploy all the required components for your cluster.
 
 These are the basic components that will be deployed, but not limited to:
@@ -13,6 +13,7 @@ These are the basic components that will be deployed, but not limited to:
 Once the installation script is executed, the resources below will be installed automatically.
 
 #### Component Diagram
+> **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file 
 
 ```mermaid
 graph TD
@@ -28,6 +29,11 @@ graph TD
     CA--> ES(External Secrets)
     MS--> SA(Sample Micro Service)
 ```
+
+
+  
+
+
 #### Folder Structure and Environment Variables
 
 Every cluster addon has several environment files. When the application set tries to deploy addons or microservices, it looks for two files. The first one is the values.yaml file, and the second file is values.**[environment]**.yaml file. The environment file will override the values on the values.yaml file.
