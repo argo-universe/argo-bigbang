@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: v1
+name: bigbang-app
+description: Argo Application to initiate cluster addons appset with env value
+type: application
+version: v1

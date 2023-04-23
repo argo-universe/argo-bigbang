@@ -1,0 +1,16 @@
+argo-cd:
+  ## ApplicationSet
+  applicationSet:
+    args:
+      policy: sync
+
+  ## Controller
+  controller:
+    logFormat: json
+    ## HA mode
+    enableStatefulSet: true
+
+  ## Repo Server
+  repoServer:
+    logFormat: json
+    replicas: 2

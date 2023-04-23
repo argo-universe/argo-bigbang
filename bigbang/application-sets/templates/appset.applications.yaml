@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications-appset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/makdeniz/argo-bigbang.git
+        revision: main
+        files:
+          - path: "bigbang/applications/*/values.{{ .Values.env }}.yaml"
+  template:
+    metadata:
+      name: '{{ "{{path.basename}}" }}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/makdeniz/argo-bigbang.git
+        targetRevision: main
+        path: '{{ "{{path}}" }}'
+        helm:
+          valueFiles:
+            - values.yaml
+            - values.{{ .Values.env }}.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ "{{config.namespace}}" }}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true            
+        automated:
+          prune: true
+          selfHeal: true
