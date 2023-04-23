@@ -16,6 +16,9 @@ Once the installation script is executed, the resources below will be installed 
 
 ```mermaid
 graph TD
+    style CA fill:lightgreen,stroke:#333,stroke-width:1px
+    style MS fill:lightgreen,stroke:#333,stroke-width:1px
+
     A(exucute install.sh) --> B(ArgoCD)
     A--> BB(Bigbang App)
     BB --> CA(Cluster Addons ApplicationSet)
@@ -29,28 +32,24 @@ graph TD
 
 Every cluster addon has several environment files. When the application set tries to deploy addons or microservices, it looks for two files. The first one is the values.yaml file, and the second file is values.**[environment]**.yaml file. The environment file will override the values on the values.yaml file.
 
-/cluster-addons
-├── /argocd
-│   ├── Chart.yaml
-│   ├── values.yaml
-│   ├── values.**dev**.yaml
-│   ├── values.**qa**.yaml
-│   ├── values.**staging**.yaml
-│   └── values.**prod**.yaml
-├── /nginx-ingress
-│   ├── Chart.yaml
-│   ├── values.yaml
-│   ├── values.**dev**.yaml
-│   ├── values.**qa**.yaml
-│   ├── values.**staging**.yaml
-│   └── values.**prod**.yaml
-├── /external-secrets
-│   ├── Chart.yaml
-│   ├── values.yaml
-│   ├── values.**dev**.yaml
-│   ├── values.**qa**.yaml
-│   ├── values.**staging**.yaml
-│   └── values.**prod**.yaml
+
+```mermaid
+graph TD
+    style DEV fill:lightgreen,stroke:#333,stroke-width:1px
+    style QA fill:orange,stroke:#333,stroke-width:1px
+    style STG fill:yellow,stroke:#333,stroke-width:1px
+    style PROD fill:red,stroke:#333,stroke-width:1px
+
+    R[cluster-addons] --> ADDON[Addons: argocd]
+    ADDON --> A0[Chart.yaml]
+    ADDON --> A1[Chart.lock]
+    ADDON --> A2[values.yaml]
+    ADDON --> DEV[values.dev.yaml]
+    ADDON --> QA[values.qa.yaml]
+    ADDON --> STG[values.staging.yaml]
+    ADDON --> PROD[values.prod.yaml] 
+     
+```
 
 
 ## Installation
