@@ -34,20 +34,20 @@ Every cluster addon has several environment files. When the application set trie
 
 
 ```mermaid
-graph TD
+graph LR
     style DEV fill:lightgreen,stroke:#333,stroke-width:1px
     style QA fill:orange,stroke:#333,stroke-width:1px
     style STG fill:yellow,stroke:#333,stroke-width:1px
     style PROD fill:red,stroke:#333,stroke-width:1px
 
-    R[cluster-addons] --> ADDON[Addons: argocd]
-    ADDON --> A0[Chart.yaml]
-    ADDON --> A1[Chart.lock]
-    ADDON --> A2[values.yaml]
-    ADDON --> DEV[values.dev.yaml]
-    ADDON --> QA[values.qa.yaml]
-    ADDON --> STG[values.staging.yaml]
-    ADDON --> PROD[values.prod.yaml] 
+    R[fa:fa-folder cluster-addons] --> ADDON[fa:fa-folder Addons: argocd]
+    ADDON --> A0[fa:fa-file Chart.yaml]
+    ADDON --> A1[fa:fa-file Chart.lock]
+    ADDON --> A2[fa:fa-file values.yaml]
+    ADDON --> DEV[fa:fa-file values.dev.yaml]
+    ADDON --> QA[fa:fa-file values.qa.yaml]
+    ADDON --> STG[fa:fa-file values.staging.yaml]
+    ADDON --> PROD[fa:fa-file values.prod.yaml] 
      
 ```
 
