@@ -1,7 +1,7 @@
 # Argo-Bigbang
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/makdeniz/argo-bigbang/blob/master/LICENSE)
 
-<img src="big-bang.png" alt="" width="200" align="center" />
+<img src="big-bang.png" alt="" />
 
 Argo-Bigbang is a boilerplate used to deploy your entire assets with single command using ArgoCD elegantly. This repository will deploy all the basic components of a common Kubernetes cluster and a sample microservice to provide insight into the architecture of GitOps. By manually executing the shell script or executing it through a pipeline, you will be able to deploy all the required components for your cluster.
 
