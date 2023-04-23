@@ -6,17 +6,17 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/makdeniz/argo-bigbang.git
+        repoURL: https://github.com/makdeniz/argocd-microservices
         revision: main
         files:
-          - path: "bigbang/applications/*/values.{{ .Values.env }}.yaml"
+          - path: "microservices/*/values.{{ .Values.env }}.yaml"
   template:
     metadata:
       name: '{{ "{{path.basename}}" }}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/makdeniz/argo-bigbang.git
+        repoURL: https://github.com/makdeniz/argocd-microservices
         targetRevision: main
         path: '{{ "{{path}}" }}'
         helm:
