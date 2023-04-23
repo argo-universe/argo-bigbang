@@ -1,6 +1,7 @@
 # Argo-Bigbang
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/makdeniz/argo-bigbang/blob/master/LICENSE)
----
+
+
 ArgoCD boilerplate is used to deploy to ArgoCD elegantly. This repository will deploy all the basic components of a common Kubernetes cluster and a sample microservice to provide insight into the architecture of GitOps. By manually executing the shell script or executing it through a pipeline, you will be able to deploy all the required components for your cluster.
 
 These are the basic components that will be deployed, but not limited to:
