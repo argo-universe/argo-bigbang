@@ -16,6 +16,8 @@ spec:
       parameters:
         - name: "env"
           value: {{ .Values.env }}
+        - name: "targetRevision"
+          value: {{ .Values.targetRevision }}          
   project: default
   syncPolicy:
     automated:

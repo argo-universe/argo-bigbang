@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/argo-universe/argo-bigbang.git
+        repoURL: https://github.com/argo-universe/argo-bigbang
         revision: {{ .Values.targetRevision }}
         files:
           - path: "bigbang/cluster-addons/*/values.{{ .Values.env }}.yaml"
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/argo-universe/argo-bigbang.git
+        repoURL: https://github.com/argo-universe/argo-bigbang
         targetRevision: {{ .Values.targetRevision }}
         path: '{{ "{{path}}" }}'
         helm:
