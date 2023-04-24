@@ -57,28 +57,37 @@ sequenceDiagram
     %%{init:{'theme':'forest'}}%%
 ```
 
-#### Folder Structure and Environment Variables
+#### Folder Structure of Cluster-addons and Environment Variables
 
 Every cluster addon has several environment files. When the application set tries to deploy addons or microservices, it looks for two files. The first one is the values.yaml file, and the second file is values.**[environment]**.yaml file. The environment file will override the values on the values.yaml file.
 
-```mermaid
-graph LR
-    style DEV fill:lightgreen,stroke:#333,stroke-width:1px
-    style QA fill:orange,stroke:#333,stroke-width:1px
-    style STG fill:yellow,stroke:#333,stroke-width:1px
-    style PROD fill:red,stroke:#333,stroke-width:1px
-
-    R[fa:fa-folder cluster-addons] --> ADDON[fa:fa-folder Addons: argocd]
-    ADDON --> A0[fa:fa-file Chart.yaml]
-    ADDON --> A1[fa:fa-file Chart.lock]
-    ADDON --> A2[fa:fa-file values.yaml]
-    ADDON --> DEV[fa:fa-file values.dev.yaml]
-    ADDON --> QA[fa:fa-file values.qa.yaml]
-    ADDON --> STG[fa:fa-file values.staging.yaml]
-    ADDON --> PROD[fa:fa-file values.prod.yaml]
-
 ```
-
+./cluster-addons
+├── argocd
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── values.dev.yaml
+│   ├── values.prod.yaml
+│   ├── values.qa.yaml
+│   ├── values.staging.yaml
+│   └── values.yaml
+├── external-secrets
+│   ├── Chart.lock
+│   ├── Chart.yaml
+│   ├── values.dev.yaml
+│   ├── values.prod.yaml
+│   ├── values.qa.yaml
+│   ├── values.staging.yaml
+│   └── values.yaml
+└── ingress-nginx
+    ├── Chart.lock
+    ├── Chart.yaml
+    ├── values.dev.yaml
+    ├── values.prod.yaml
+    ├── values.qa.yaml
+    ├── values.staging.yaml
+    └── values.yaml
+```
 ## Installation
 
 run install.sh file with environment name
