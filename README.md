@@ -1,7 +1,7 @@
 # Argo-Bigbang
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/makdeniz/argo-bigbang/blob/master/LICENSE)
 
-<img src="big-bang.png" alt="" />
+<img src="https://cncf-branding.netlify.app/img/projects/argo/horizontal/color/argo-horizontal-color.png" height="100" alt="" /> 
 
 Argo-Bigbang is a boilerplate used to deploy your entire assets with single command using ArgoCD elegantly. This repository will deploy all the basic components of a common Kubernetes cluster and a sample microservice to provide insight into the architecture of GitOps. By manually executing the shell script or executing it through a pipeline, you will be able to deploy all the required components for your cluster.
 
@@ -32,6 +32,22 @@ graph TD
     MS--> SA(Sample Micro Service)
 ```
 
+
+### Sequence Diagram
+```mermaid
+sequenceDiagram
+    install.sh->>+install.sh: Create argocd namespace
+    install.sh->>+Argocd: Install ArgoCD application
+    install.sh->>+Bigbang App: Install Bigbang App
+    Bigbang App->>+Cluster Addons ApplicationSet: Install Install ApplicationSets
+    Bigbang App->>+Microservices ApplicationSet: Install Install ApplicationSets
+    loop Foreach folder under remote repo
+    Microservices ApplicationSet->>+Argocd: Generate Microservice Apps
+    end
+    loop Foreach folder under cluster-addons folder 
+    Cluster Addons ApplicationSet->>+Argocd: Generate Cluster Addons Apps
+    end
+```
 
   
 
