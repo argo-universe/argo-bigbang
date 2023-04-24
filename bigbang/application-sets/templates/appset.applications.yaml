@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{ "{{path.basename}}" }}'
     spec:
-      project: default
+      project: applications
       source:
         repoURL: https://github.com/argo-universe/app-configs
         targetRevision: {{ .Values.targetRevision }}
