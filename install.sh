@@ -23,6 +23,11 @@ helm upgrade --install argocd argo/argo-cd \
     -n argocd \
     --version 5.16.10 
 
+# Wait for the Deployment to be ready
+echo "Waiting for Deployment to be ready..."
+kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
+
+
 # Install BigBang application using the Helm chart from the local repository
 helm upgrade --install bigbang-app bigbang/bigbang-app -n argocd \
     --set env=$ENV \
