@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/argo-universe/argo-bigbang.git
-        revision: main
+        revision: {{ .Values.targetRevision }}
         files:
           - path: "bigbang/cluster-addons/*/values.{{ .Values.env }}.yaml"
   template:
@@ -17,7 +17,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/argo-universe/argo-bigbang.git
-        targetRevision: main
+        targetRevision: {{ .Values.targetRevision }}
         path: '{{ "{{path}}" }}'
         helm:
           valueFiles:
