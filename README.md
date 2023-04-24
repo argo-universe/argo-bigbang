@@ -1,6 +1,6 @@
 # Argo-Bigbang
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/makdeniz/argo-bigbang/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/argo-universe/argo-bigbang/blob/master/LICENSE)
 
 <img src="https://cncf-branding.netlify.app/img/projects/argo/horizontal/color/argo-horizontal-color.png" height="100" alt="" />
 

@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/makdeniz/argocd-microservices
+        repoURL: https://github.com/argo-universe/argocd-microservices
         revision: main
         files:
           - path: "microservices/*/values.{{ .Values.env }}.yaml"
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/makdeniz/argocd-microservices
+        repoURL: https://github.com/argo-universe/argocd-microservices
         targetRevision: main
         path: '{{ "{{path}}" }}'
         helm:

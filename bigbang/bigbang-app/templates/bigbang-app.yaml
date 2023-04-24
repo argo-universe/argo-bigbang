@@ -10,8 +10,8 @@ spec:
     server: "https://kubernetes.default.svc"
   source:
     path: bigbang/application-sets
-    repoURL: "https://github.com/makdeniz/argo-bigbang"
-    targetRevision: main
+    repoURL: "https://github.com/argo-universe/argo-bigbang"
+    targetRevision: {{ .Values.targetRevision }}
     helm:
       parameters:
         - name: "env"

@@ -6,6 +6,7 @@ if [[ $# -eq 0 ]] ; then
 fi
 
 ENV=$1
+BRANCH=${2:-main} # Set default value "main" if second argument is not provided
 
 # Set environment variable
 export ENV=$ENV
@@ -23,4 +24,6 @@ helm upgrade --install argocd argo/argo-cd \
     --version 5.16.10 
 
 # Install BigBang application using the Helm chart from the local repository
-helm upgrade --install bigbang-app bigbang/bigbang-app -n argocd --set env=$ENV
+helm upgrade --install bigbang-app bigbang/bigbang-app -n argocd \
+    --set env=$ENV \
+    --set targetRevision=$BRANCH 
