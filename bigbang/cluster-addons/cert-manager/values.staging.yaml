@@ -1,3 +1,2 @@
 config:
-  namespace: kube-system
- 
+  namespace: cert-manager
