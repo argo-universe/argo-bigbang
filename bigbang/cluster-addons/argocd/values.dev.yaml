@@ -44,10 +44,10 @@ argo-cd:
         #         name: use-annotation
 
       # -- Ingress TLS configuration
-      tls: []
-        # - secretName: your-certificate-name
-        #   hosts:
-        #     - argocd.example.com
+      tls: 
+        - secretName: sampleapp.muratakdeniz.com
+          hosts:
+            - argocd.muratakdeniz.com
 
       # -- Uses `server.service.servicePortHttps` instead `server.service.servicePortHttp`
       https: false
