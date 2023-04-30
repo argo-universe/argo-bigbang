@@ -21,7 +21,7 @@ argo-cd:
       # -- Additional ingress labels
       labels: {}
       # -- Defines which ingress controller will implement the resource
-      ingressClassName: "nginx"
+      ingressClassName: ""
 
       # -- List of ingress hosts
       ## Argo Ingress.
