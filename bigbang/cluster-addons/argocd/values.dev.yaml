@@ -15,6 +15,7 @@ argo-cd:
       # -- Additional ingress annotations
       annotations: 
         kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
       # -- Additional ingress labels
       labels: {}
       # -- Defines which ingress controller will implement the resource
