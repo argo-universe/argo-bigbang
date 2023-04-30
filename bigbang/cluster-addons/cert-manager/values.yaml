@@ -3,3 +3,4 @@ config:
 
 cert-manager:
   installCRDs: true
+  acmeEmail: makdeniz@msn.com
