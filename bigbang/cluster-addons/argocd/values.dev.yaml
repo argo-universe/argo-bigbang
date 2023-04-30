@@ -50,4 +50,4 @@ argo-cd:
             - argocd.muratakdeniz.com
 
       # -- Uses `server.service.servicePortHttps` instead `server.service.servicePortHttp`
-      https: false
+      https: true
