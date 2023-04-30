@@ -47,7 +47,7 @@ argo-cd:
 
       # -- Ingress TLS configuration
       tls: 
-        - secretName: sampleapp.muratakdeniz.com
+        - secretName: issuer-letsencrypt
           hosts:
             - argocd.muratakdeniz.com
 
