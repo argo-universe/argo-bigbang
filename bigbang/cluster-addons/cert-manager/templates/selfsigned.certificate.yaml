@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: selfsigned-cert
-  namespace: sandbox
+  namespace: backend
 spec:
   isCA: true
   commonName: selfsigned-cert
