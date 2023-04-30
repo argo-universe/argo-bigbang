@@ -16,7 +16,6 @@ kubectl create ns argocd
 
 # install ArgoCD
 cd bigbang/cluster-addons/argocd
-helm dependency update
 helm upgrade --install argocd . \
     -f values.$ENV.yaml \
     -n argocd 
