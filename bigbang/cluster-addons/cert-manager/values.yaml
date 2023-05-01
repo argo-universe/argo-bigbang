@@ -1,7 +1,8 @@
 config:
   namespace: cert-manager
 
-acmeEmail: makdeniz@msn.com
+# Default value for all environments
+acmeEmail: example@msn.com
 
 cert-manager:
   installCRDs: true
