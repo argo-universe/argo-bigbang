@@ -4,6 +4,7 @@ metadata:
   name: cluster-addon-appset
   namespace: argocd
 spec:
+  preserveResourcesOnDeletion: false
   generators:
     - git:
         repoURL: https://github.com/argo-universe/argo-bigbang
