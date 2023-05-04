@@ -1568,7 +1568,7 @@ argo-cd:
 
       # Application reconciliation timeout is the max amount of time required to discover if a new manifests version got
       # published to the repository. Reconciliation by timeout is disabled if timeout is set to 0. Three minutes by default.
-      timeout.reconciliation: 180s
+      timeout.reconciliation: 10s
 
       # Timeout to refresh application data as well as target manifests cache
       timeout.hard.reconciliation: "0"
