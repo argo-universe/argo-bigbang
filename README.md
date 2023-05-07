@@ -100,6 +100,23 @@ run install.sh file with environment name
 
 depending on your configuration use portforward or ingress to access argocd UI.
 
+### Using port-forward
+
+* Forward the port 
+    ```bash
+    kubectl port-forward services/argocd-server 10443:443 -n argocd
+    ```
+* Open https://localhost:10443 in your browser
+
+### Login to the ArgoCD GUI
+* Get the default argocd admin password
+    ```bash
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+    ```
+* Login to the ArgoCD GUI
+    * username: admin
+    * password: [PASSWORD FROM ABOVE] 
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
