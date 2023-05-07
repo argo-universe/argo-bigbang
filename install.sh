@@ -12,9 +12,9 @@ BRANCH=${2:-main} # Set default value "main" if second argument is not provided
 export ENV=$ENV
 
 # Create Kubernetes namespaces for ArgoCD and Ingress
-K8S_NAMESPACE="argocd"
-if ! kubectl get ns "$K8S_NAMESPACE" > /dev/null ; then
-    kubectl create ns "$K8S_NAMESPACE"
+ARGOCD_NAMESPACE="argocd"
+if ! kubectl get ns $ARGOCD_NAMESPACE 2> /dev/null ; then
+    kubectl create ns $ARGOCD_NAMESPACE
 fi
 
 # install ArgoCD
@@ -31,6 +31,6 @@ kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -
 
 # Install BigBang application using the Helm chart from the local repository
 cd ../../..
-helm upgrade --install bigbang-app bigbang/bigbang-app -n argocd \
+helm upgrade --install bigbang-app bigbang/bigbang-app -n $ARGOCD_NAMESPACE \
     --set env=$ENV \
     --set targetRevision=$BRANCH 
