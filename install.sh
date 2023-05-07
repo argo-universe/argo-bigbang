@@ -30,3 +30,7 @@ cd ../../..
 helm upgrade --install bigbang-app bigbang/bigbang-app -n argocd \
     --set env=$ENV \
     --set targetRevision=$BRANCH 
+
+# Echo admin Argocd admin password
+ArgoCDAdminPassword=$(kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d)
+echo "ArgoCD admin password is $ArgoCDAdminPassword"
