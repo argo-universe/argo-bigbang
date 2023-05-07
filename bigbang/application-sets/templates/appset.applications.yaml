@@ -4,7 +4,7 @@ metadata:
   name: applications-appset
   namespace: argocd
 spec:
-  preserveResourcesOnDeletion: false
+  preserveResourcesOnDeletion: true
   generators:
     - git:
         repoURL: https://github.com/argo-universe/app-configs
