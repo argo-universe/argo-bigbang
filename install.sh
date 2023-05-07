@@ -12,10 +12,14 @@ BRANCH=${2:-main} # Set default value "main" if second argument is not provided
 export ENV=$ENV
 
 # Create Kubernetes namespaces for ArgoCD and Ingress
-kubectl create ns argocd  
+K8S_NAMESPACE="argocd"
+if ! kubectl get ns "$K8S_NAMESPACE" > /dev/null ; then
+    kubectl create ns "$K8S_NAMESPACE"
+fi
 
 # install ArgoCD
 cd bigbang/cluster-addons/argocd
+helm dependency build
 helm upgrade --install argocd . \
     -f values.$ENV.yaml \
     -n argocd 
