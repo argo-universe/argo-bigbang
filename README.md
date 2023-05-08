@@ -90,11 +90,13 @@ Every cluster addon has several environment files. When the application set trie
 ```
 ## Installation
 
-run install.sh file with environment name
+run [install.sh](/bootstrap/install.sh) file with environment name
 
 ```bash
- $ ./install.sh dev
+ $ ./bootstrap/install.sh dev
 ```
+
+To use privat Git and Helm Repositories, add a Secret with the repository credentials and the `argocd.argoproj.io/secret-type` annotation in the ArgoCD namespace. See [/bootstrap/repo-creds.yaml](/bootstrap/repo-creds.yaml) for an example.
 
 ## Usage
 

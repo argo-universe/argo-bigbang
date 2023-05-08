@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+  name: git-repo-creds
+  namespace: argocd
+type: Opaque
+stringData:
+  password: <git repo password>
+  url: <git repo url>
+  username: <git repo username>
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: helm-repo-creds
+  namespace: argocd
+type: Opaque
+stringData:
+  name: <helm repo name to be used as alias>
+  password: <helm repo password>
+  type: helm
+  url: <helm repo url>
+  username: <helm repo username>
