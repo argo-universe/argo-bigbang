@@ -6,3 +6,5 @@ acmeEmail: example@msn.com
 
 cert-manager:
   installCRDs: true
+  webhook:
+    securePort: 10260
