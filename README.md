@@ -10,14 +10,20 @@ These are the basic components that will be deployed, but not limited to:
 
 - nginx-ingress
 - external secrets
-- a sample microservice
-  - the microservice will be deployed from a separate repository to keep the cluster from the applications.
+- apps
+    - [frontend](https://github.com/argo-universe/frontend-app)
+    - [backend](https://github.com/argo-universe/backend-app) 
 
-Once the installation script is executed, the resources below will be installed automatically.
+> the microservice will be deployed from a separate repository to keep the cluster from the applications.
+
+
+-----
 
 #### Component Diagram
 
-> **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file
+ **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file
+
+
 
 ```mermaid
 graph TD
@@ -38,7 +44,9 @@ graph TD
     MS--> BE(Backend App)
 ```
 
-### Sequence Diagram
+---
+
+#### Sequence Diagram
 
 ```mermaid
 
@@ -60,6 +68,9 @@ sequenceDiagram
 
     %%{init:{'theme':'forest'}}%%
 ```
+
+---
+
 
 #### Folder Structure of Cluster-addons and Environment Variables
 
@@ -92,6 +103,8 @@ Every cluster addon has several environment files. When the application set trie
     ├── values.staging.yaml
     └── values.yaml
 ```
+
+---
 ## Installation
 ### Local Installation
 
@@ -136,6 +149,9 @@ ArgoCD admin password is cDuhncyhbQspLJDO
 ```
 
 
+### Cloud Services Installation
+
+##### AWS
 
 
 ## Usage
