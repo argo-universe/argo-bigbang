@@ -10,14 +10,20 @@ These are the basic components that will be deployed, but not limited to:
 
 - nginx-ingress
 - external secrets
-- a sample microservice
-  - the microservice will be deployed from a separate repository to keep the cluster from the applications.
+- apps
+    - [frontend](https://github.com/argo-universe/frontend-app)
+    - [backend](https://github.com/argo-universe/backend-app) 
 
-Once the installation script is executed, the resources below will be installed automatically.
+> the microservice will be deployed from a separate repository to keep the cluster from the applications.
 
-#### Component Diagram
 
-> **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file
+-----
+
+## Component Diagram
+
+ **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file
+
+
 
 ```mermaid
 graph TD
@@ -25,16 +31,22 @@ graph TD
     style MS fill:lightgreen,stroke:#333,stroke-width:1px
 
     A(exucute install.sh) --> B(ArgoCD)
-    A--> BB(Bigbang App)
+    A---> BB(Bigbang App)
     BB --> CA(Cluster Addons ApplicationSet)
     BB --> MS(Microservices ApplicationSet)
     CA--> AC(ArgoCD)
     CA--> ING(Nginx-ingress)
     CA--> ES(External Secrets)
-    MS--> SA(Sample Micro Service)
+    CA--> RM(Prometheus)
+    CA--> GF(Grafana)
+    
+    MS--> FE(Frontend App)
+    MS--> BE(Backend App)
 ```
 
-### Sequence Diagram
+---
+
+## Sequence Diagram
 
 ```mermaid
 
@@ -56,6 +68,9 @@ sequenceDiagram
 
     %%{init:{'theme':'forest'}}%%
 ```
+
+---
+
 
 #### Folder Structure of Cluster-addons and Environment Variables
 
@@ -88,22 +103,69 @@ Every cluster addon has several environment files. When the application set trie
     ├── values.staging.yaml
     └── values.yaml
 ```
-## Installation
 
-run install.sh file with environment name
+---
+## Installation
+### Local Installation
+
+To perform local testing, you can utilize not limited but either  [Minikube](https://minikube.sigs.k8s.io/docs/start/). or [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation). can be used.
+
+Once you have installed Kubernetes locally, follow these steps:
+
+Clone the bigbang repository and execute the install script:
 
 ```bash
- $ ./install.sh dev
+git clone https://github.com/argo-universe/argo-bigbang.git
+cd argo-bigbang
+
+# dev is just the name of the envriontment identification it could be anything etc. Mydev, staging or prod
+./install.sh dev 
 ```
 
+> **Iportant:**: If you set the environment identifier as 'abc', ensure that the respective environment variable files are configured in the 'cluster-addons' and 'app-configs/apps' folders.
+
+after the execution of the script all the resources will be generated and script will give you the argocd default admin password.
+
+```bash
+❯ ./install.sh dev
+namespace/argocd created
+Release "argocd" does not exist. Installing it now.
+NAME: argocd
+LAST DEPLOYED: Fri May 12 22:01:43 2023
+NAMESPACE: argocd
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+Waiting for Deployment to be ready...
+deployment.apps/argocd-server condition met
+Release "bigbang-app" does not exist. Installing it now.
+NAME: bigbang-app
+LAST DEPLOYED: Fri May 12 22:02:20 2023
+NAMESPACE: argocd
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+ArgoCD admin password is cDuhncyhbQspLJDO
+```
+
+
+### Cloud Services Installation
+
+##### AWS
+
+
 ## Usage
+with port-forward script you can see the argocd UI on your browser
 
-depending on your configuration use portforward or ingress to access argocd UI.
+```bash 
+kubectl port-forward svc/argocd-server -n argocd 8080:80
+```
+visit [http://localhost:8080](http://localhost:8080)
 
-## License
+<img src="./assets/apps.png"  alt="" />
+<img src="./assets/bigbang.png"  alt="" />
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
+ 
 ## Contributing
 
 We welcome issues and PRs!

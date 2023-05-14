@@ -18,8 +18,8 @@ argo-cd:
         nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
       hosts: 
-        - argocd.muratakdeniz.com
+        - argocd.argouniverse.com
       tls: 
         - secretName: issuer-letsencrypt
           hosts:
-            - argocd.muratakdeniz.com
+            - argocd.argouniverse.com
