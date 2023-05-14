@@ -11,7 +11,7 @@ argo-cd:
       }  
   server:
     ingress:
-      enabled: false
+      enabled: true
       annotations: 
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt-cluster-issuer
