@@ -136,8 +136,6 @@ ArgoCD admin password is cDuhncyhbQspLJDO
 ```
 
 
-<img src="./assets/apps.png"  alt="" />
-<img src="./assets/bigbang.png"  alt="" />
 
 
 ## Usage
@@ -148,6 +146,8 @@ kubectl port-forward svc/argocd-server -n argocd 8080:80
 ```
 visit [http://localhost:8080](http://localhost:8080)
 
+<img src="./assets/apps.png"  alt="" />
+<img src="./assets/bigbang.png"  alt="" />
 
  
 ## Contributing
