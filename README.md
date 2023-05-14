@@ -19,7 +19,7 @@ These are the basic components that will be deployed, but not limited to:
 
 -----
 
-#### Component Diagram
+## Component Diagram
 
  **INFO:** Since the applicationset is configuret to generate an application for each folder in cluster addons. If you need to deploy another component just create a folder with environment value file
 
@@ -46,7 +46,7 @@ graph TD
 
 ---
 
-#### Sequence Diagram
+## Sequence Diagram
 
 ```mermaid
 
