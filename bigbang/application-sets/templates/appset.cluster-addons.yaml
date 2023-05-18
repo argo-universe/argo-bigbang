@@ -6,17 +6,17 @@ metadata:
 spec: 
   generators:
     - git:
-        repoURL: https://github.com/argo-universe/argo-bigbang
+        repoURL: https://github.com/argo-universe/cluster-addons
         revision: {{ .Values.targetRevision }}
         files:
-          - path: "bigbang/cluster-addons/*/values.{{ .Values.env }}.yaml"
+          - path: "cluster-addons/*/values.{{ .Values.env }}.yaml"
   template:
     metadata:
       name: '{{ "{{path.basename}}" }}'
     spec:
       project: cluster-addons
       source:
-        repoURL: https://github.com/argo-universe/argo-bigbang
+        repoURL: https://github.com/argo-universe/cluster-addons
         targetRevision: {{ .Values.targetRevision }}
         path: '{{ "{{path}}" }}'
         helm:
