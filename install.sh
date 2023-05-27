@@ -5,6 +5,8 @@ REPO_USER=$GITHUB_USER
 REPO_PASSWORD=$GITHUB_PAT
 REPO_URL=$GITHUB_URL
 
+SSO_CLIENT_SECRET=$GITHUB_CLIENT_SECRET
+
 if [[ $# -eq 0 ]]; then
     echo 'Please provide an environment parameter (e.g., dev, stage, prod)'
     exit 1
@@ -24,7 +26,7 @@ kubectl create ns argocd
 # --------------------------------------------------------------------------------------------
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update argo
-helm upgrade --install argocd argo/argo-cd -n argocd --version 5.16.10
+helm upgrade --install argocd argo/argo-cd -n argocd --version 5.34.5
 
 # Wait for the Deployment to be ready
 echo "Waiting for Deployment to be ready..."
@@ -40,6 +42,17 @@ if [[ ! -z "$REPO_USER" && ! -z "$REPO_PASSWORD" && ! -z "$REPO_URL" ]]; then
 
     kubectl label secret git-repo-creds -n argocd "argocd.argoproj.io/secret-type=repository"
 fi
+
+if [[ ! -z "$SSO_CLIENT_SECRET" ]]; then 
+     kubectl create secret generic github-sso-client-secret \
+     --from-literal="dex.github.clientSecret"=$GITHUB_CLIENT_SECRET \
+     -n argocd
+
+    kubectl label secret github-sso-client-secret -n argocd "app.kubernetes.io/part-of=argocd"
+
+fi
+
+
 
 
 # --------------------------------------------------------------------------------------------
