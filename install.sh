@@ -24,7 +24,7 @@ kubectl create ns argocd
 # --------------------------------------------------------------------------------------------
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update argo
-helm upgrade --install argocd argo/argo-cd -n argocd --version 5.34.5
+helm upgrade --install argocd argo/argo-cd -n argocd --version 5.16.10
 
 # Wait for the Deployment to be ready
 echo "Waiting for Deployment to be ready..."
