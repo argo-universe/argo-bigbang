@@ -18,10 +18,7 @@ spec:
       source:
         repoURL: https://github.com/argo-universe/cluster-addons
         targetRevision: {{ .Values.targetRevision }}
-        path: '{{ "{{path}}" }}/dev'
-        helm:
-          valueFiles: 
-            - /values.{{ .Values.env }}.yaml
+        path: '{{ "{{path}}" }}/dev' 
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ "{{config.namespace}}" }}'
