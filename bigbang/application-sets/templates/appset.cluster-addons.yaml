@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/argo-universe/cluster-addons
         revision: {{ .Values.targetRevision }}
         files:
-          - path: "cluster-addons/*/{{ .Values.env }}/values.{{ .Values.env }}.yaml"
+          - path: "cluster-addons/*/values.{{ .Values.env }}.yaml"
   template:
     metadata:
       name: '{{ "{{path.basename}}" }}'
