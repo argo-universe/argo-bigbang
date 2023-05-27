@@ -21,7 +21,7 @@ spec:
         path: '{{ "{{path}}" }}/dev'
         helm:
           valueFiles: 
-            - /{{ .Values.env }}/values.{{ .Values.env }}.yaml
+            - /values.{{ .Values.env }}.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ "{{config.namespace}}" }}'
