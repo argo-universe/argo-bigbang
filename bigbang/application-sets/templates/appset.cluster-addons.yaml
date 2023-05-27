@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/argo-universe/cluster-addons
         targetRevision: {{ .Values.targetRevision }}
-        path: '{{ "{{path}}" }}/{{ .Values.env }}'
+        path: '{{ "{{path}}" }}'
         helm:
           valueFiles: 
             - /{{ .Values.env }}/values.{{ .Values.env }}.yaml
