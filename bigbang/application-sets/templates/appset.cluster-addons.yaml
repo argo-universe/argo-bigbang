@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/argo-universe/cluster-addons
         revision: {{ .Values.targetRevision }}
         files:
-          - path: "cluster-addons/*/{{ .Values.env }}/values.{{ .Values.env }}.yaml"
+          - path: "cluster-addons/*/config.yaml"
   template:
     metadata:
       name: '{{ "{{path.basename}}" }}'
@@ -17,11 +17,8 @@ spec:
       project: cluster-addons
       source:
         repoURL: https://github.com/argo-universe/cluster-addons
-        targetRevision: {{ .Values.targetRevision }}
-        path: '{{ "{{path}}" }}'
-        helm:
-          valueFiles: 
-            - values.{{ .Values.env }}.yaml
+        targetRevision: {{ .Values.targetRevision }} 
+        path: '{{ printf "{{path}}/%s" .Values.env }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ "{{config.namespace}}" }}'
