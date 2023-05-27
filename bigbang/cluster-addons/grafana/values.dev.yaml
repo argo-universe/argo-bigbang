@@ -1,5 +1,0 @@
-config:
-  namespace: internal
-
-grafana:
-  test: "test"
