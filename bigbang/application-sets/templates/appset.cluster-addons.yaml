@@ -12,13 +12,13 @@ spec:
           - path: "cluster-addons/*/{{.Values.env }}/values.yaml"
   template:
     metadata:
-      name: '{{ "{{path.basename}}" }}'
+      name: '{{ "{{path[1]}}" }}'
     spec:
       project: cluster-addons
       source:
         repoURL: https://github.com/argo-universe/cluster-addons
         targetRevision: feature-env-seperation
-        path: '{{ printf "{{path}}/%s" .Values.env }}'
+        path: '{{ "{{path.basename}}" }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ "{{config.namespace}}" }}'
