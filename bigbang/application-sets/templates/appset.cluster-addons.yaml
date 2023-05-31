@@ -10,6 +10,8 @@ spec:
         revision: {{ .Values.targetRevision }}
         files:
           - path: "cluster-addons/*/{{.Values.env }}/values.yaml"
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: '{{ "{{path[1]}}" }}'
