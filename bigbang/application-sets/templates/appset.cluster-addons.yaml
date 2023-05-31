@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/argo-universe/cluster-addons
         targetRevision: feature-env-seperation
-        path: '{{ "{{path.basename}}" }}'
+        path: '{{ "{{path}}" }}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{ "{{config.namespace}}" }}'
