@@ -74,34 +74,35 @@ sequenceDiagram
 
 #### Folder Structure of Cluster-addons and Environment Variables
 
-Every cluster addon has several environment files. When the application set tries to deploy addons or microservices, it looks for two files. The first one is the values.yaml file, and the second file is values.**[environment]**.yaml file. The environment file will override the values on the values.yaml file.
+Every cluster addon has several environment files. When the application set tries to deploy addons or microservices, it looks for two files. The first one is the values.default.yaml file, and the second file is /[environment]/values.yaml file. The environment file will override the values on the values.default.yaml file.
+
+If you want to disable the cluster addons for any env just rename the value file as `values.disabled.yaml`
 
 ```
-./cluster-addons
-├── argocd
-│   ├── Chart.lock
-│   ├── Chart.yaml
-│   ├── values.dev.yaml
-│   ├── values.prod.yaml
-│   ├── values.qa.yaml
-│   ├── values.staging.yaml
-│   └── values.yaml
-├── external-secrets
-│   ├── Chart.lock
-│   ├── Chart.yaml
-│   ├── values.dev.yaml
-│   ├── values.prod.yaml
-│   ├── values.qa.yaml
-│   ├── values.staging.yaml
-│   └── values.yaml
-└── ingress-nginx
-    ├── Chart.lock
-    ├── Chart.yaml
-    ├── values.dev.yaml
-    ├── values.prod.yaml
-    ├── values.qa.yaml
-    ├── values.staging.yaml
-    └── values.yaml
+.
+├── LICENSE
+├── README.md
+└── cluster-addons
+    ├── Add-on_1
+    │   ├── dev
+    │   │   ├── Chart.yaml
+    │   │   ├── templates
+    │   │   └── values.yaml
+    │   ├── prod
+    │   │   ├── Chart.yaml
+    │   │   ├── templates
+    │   │   │   ├── Additional_manifest.yaml
+    │   │   │   └── Additional_manifest2.yaml
+    │   │   └── values.yaml
+    │   └── values.default.yaml
+    └── Add-on_2
+        ├── dev
+        │   ├── Chart.yaml
+        │   └── values.disabled.yaml
+        ├── prod
+        │   ├── Chart.yaml
+        │   └── values.yaml
+        └── values.default.yaml
 ```
 
 ---
@@ -161,6 +162,8 @@ ArgoCD admin password is cDuhncyhbQspLJDO
 
 ### Vault Configuration
 
+You have the option to utilize the `vault_init.sh` file to manage the initialization and unsealing process of Vault. Simply execute the command `./vault_init.sh` or refer to the instructions provided below.
+
 To automate secret creation, we have configured HashiCorp Vault. However, before you can proceed, you need to unseal the Vault and create the required secrets.
 
 **Unseal HashiCorp Vault**
@@ -212,7 +215,7 @@ Please follow the steps above to configure and manage secrets in HashiCorp Vault
 ### Cloud Services Installation
 
 ##### AWS
-
+TBD
 
 ## Usage
 with port-forward script you can see the argocd UI on your browser
