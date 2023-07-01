@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addon-appset
+  namespace: argocd
+spec: 
+  generators:
+    - git:
+        repoURL: https://github.com/{{ .Values.gitHubAccount }}/cluster-addons
+        revision: main
+        files:
+          - path: "cluster-addons/*/{{.Values.env }}/values.yaml"
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{ "{{path[1]}}" }}'
+    spec:
+      project: cluster-addons
+      source:
+        repoURL: https://github.com/{{ .Values.gitHubAccount }}/cluster-addons
+        targetRevision: main
+        path: '{{ "{{path}}" }}'
+        helm:
+          valueFiles:
+          - ../values.default.yaml
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ "{{config.namespace}}" }}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true      
+        automated:
+          prune: true
+          selfHeal: true

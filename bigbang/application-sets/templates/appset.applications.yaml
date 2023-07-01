@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applications-appset
+  namespace: argocd
+spec: 
+  generators:
+    - git:
+        repoURL: https://github.com/{{ .Values.gitHubAccount }}/app-configs
+        revision: main
+        files:
+          - path: "apps/*/{{.Values.env }}/values.yaml"
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  template:
+    metadata:
+      name: '{{ "{{path[1]}}" }}'
+    spec:
+      project: applications
+      source:
+        repoURL: https://github.com/{{ .Values.gitHubAccount }}/app-configs
+        targetRevision: main
+        path: '{{ "{{path}}" }}'
+        helm:
+          valueFiles:
+          - ../values.default.yaml
+          - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ "{{config.namespace}}" }}'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true            
+        automated:
+          prune: true
+          selfHeal: true

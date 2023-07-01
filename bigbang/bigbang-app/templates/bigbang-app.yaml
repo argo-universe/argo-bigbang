@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bigbang-app
+  namespace: argocd
+spec:
+  destination:
+    name: ""
+    namespace: default
+    server: "https://kubernetes.default.svc"
+  source:
+    path: bigbang/application-sets
+    repoURL: "https://github.com/{{ .Values.gitHubAccount }}/argo-bigbang"
+    targetRevision: main
+    helm:
+      parameters:
+        - name: "env"
+          value: {{ .Values.env }}
+        - name: "gitHubAccount"
+          value: {{ .Values.gitHubAccount }}         
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
