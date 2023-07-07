@@ -12,7 +12,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 ENV=$1
-GITHUB_ACCOUNT=${2:-"argo-universe"} # Set default value "main" if second argument is not provided
+GITHUB_ACCOUNT=${2:-"argo-universe"} # Set default value "argo-universe" if second argument is not provided
 
 # Set environment variable
 export ENV=$ENV

@@ -61,8 +61,8 @@ sequenceDiagram
     install.sh->>+install.sh: "Create argocd namespace"
     install.sh->>+Argocd: Install ArgoCD application
     install.sh->>+Bigbang App: Install Bigbang App
-    Bigbang App->>+Cluster Addons ApplicationSet: Install Install ApplicationSets
-    Bigbang App->>+Microservices ApplicationSet: Install Install ApplicationSets
+    Bigbang App->>+Cluster Addons ApplicationSet: Install Cluster Addons ApplicationSets
+    Bigbang App->>+Microservices ApplicationSet: Install Applications ApplicationSets
     loop Foreach folder under remote repo
     Microservices ApplicationSet->>+Argocd: Generate Microservice Apps
     end
