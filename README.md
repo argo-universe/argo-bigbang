@@ -29,24 +29,7 @@ These are the basic components that will be deployed, but not limited to:
 
 
 
-```mermaid
-graph TD
-    style CA fill:lightgreen,stroke:#333,stroke-width:1px
-    style MS fill:lightgreen,stroke:#333,stroke-width:1px
-
-    A(exucute install.sh) --> B(ArgoCD)
-    A---> BB(Bigbang App)
-    BB --> CA(Cluster Addons ApplicationSet)
-    BB --> MS(Microservices ApplicationSet)
-    CA--> AC(ArgoCD)
-    CA--> ING(Nginx-ingress)
-    CA--> ES(External Secrets)
-    CA--> RM(Prometheus)
-    CA--> GF(Grafana)
-    
-    MS--> FE(Frontend App)
-    MS--> BE(Backend App)
-```
+<img src="./assets/flow.png"  alt="" />
 
 ---
 
