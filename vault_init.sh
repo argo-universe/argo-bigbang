@@ -39,7 +39,7 @@ echo "Root Token: $root_token"
 
 if [[ -n "$root_token" ]]; then
   # Define namespaces
-  namespaces=("argocd" "backend" "cert-manager" "frontend" "ingress" "internal" "vault" "monitoring")
+  namespaces=("argocd" "backend" "cert-manager" "frontend" "ingress" "vault" "monitoring")
 
   # Create secret in each namespace
   for namespace in "${namespaces[@]}"; do
