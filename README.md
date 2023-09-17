@@ -17,9 +17,6 @@ These are the basic components that will be deployed, but not limited to:
 > the microservice will be deployed from a separate repository to keep the cluster from the applications.
 
 
-# Take a look at  LIVE ArgoCD installation from here https://argocd.argouniverse.com/
-
-
 
 -----
 
